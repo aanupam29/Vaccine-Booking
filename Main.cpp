@@ -1,13 +1,12 @@
 #include<bits/stdc++.h>
 #include<conio.h>
-#include<windows.h>
 using namespace std;
 
 void menu();
 void pascode();
 void cpascode();
 void login();
-void display();
+int main();
 string id;
 class one{
     public:
@@ -338,37 +337,39 @@ void menu(){
         information a1;
         one *ptr;
         staff a2;
-        int a;
+        string a;
         cin>>a;
-        if(a==1){
+        if(a=="1"){
             a1.drinfo();
         }
-        else if(a==2){
+        else if(a=="2"){
             call_dr();
         }
-        else if(a==3){
+        else if(a=="3"){
             ptr=&a2;
             ptr->get();
         }
-        else if(a==4){
+        else if(a=="4"){
             pinfoshow();
         }
-        else if(a==5){
+        else if(a=="5"){
             ptr=&a2;
             ptr->show();
         }
-        else if(a==6){
+        else if(a=="6"){
             cpascode();
         }
-        else if(a == 7)
+        else if(a == "7")
         {
         	display();
 		}
-        else if(a==8){
+        else if(a=="8"){
             login();
         }
         else{
-            cout<<"Sorry invalid choice: ";
+            cout<<"\n\n\t\tSorry Invalid Choice ";
+            this_thread::sleep_for(chrono::seconds(1));
+            menu();
         }
 
 }
@@ -387,6 +388,7 @@ void reg()
 	if(cp)
 	{
 		cout<<"\n\t\t UserId Already Exists\n";
+		this_thread::sleep_for(chrono::seconds(1));
 		login();
 	}
 	cp.close();
@@ -448,18 +450,17 @@ void pascode(){
         else{
 
             cout<<"\n\n\t\t Incorrect Password";
-            //sleep(5);
-            login();
+            this_thread::sleep_for(chrono::seconds(1));
         }
         
     }
     else
     {		
-		cout<<"\n\n\t\t UserId does not exist";
-        //sleep(5);
-        login();    	
+		cout<<"\n\t\t UserId does not exist";
+        this_thread::sleep_for(chrono::seconds(1));
 	}
     in.close();
+    login();
 }
 
 void cpascode(){
@@ -484,15 +485,16 @@ void login()
 	cout<<"\n\n\t1-\t\t New User? Press 1 to register";
 	cout<<"\n\n\t2- \t\t Press 2 to login\n\n";
 	cout<<"\t\t Enter Key: ";
-	int a;
+	string a;
 	cin>>a;
-	if(a == 1)
+	if(a == "1")
 	reg();
-	else if(a == 2)
+	else if(a == "2")
 	pascode();
 	else
 	{
-		cout<<"\n\n\t\t Wrong Choice";
+		cout<<"\n\t\t\t Invalid Choice";
+		this_thread::sleep_for(chrono::seconds(1));
 		login();
 	}
 }
