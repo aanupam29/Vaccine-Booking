@@ -1,11 +1,12 @@
 #include<bits/stdc++.h>
 #include<conio.h>
+#include<windows.h>
 using namespace std;
 
 void menu();
 void pascode();
 void cpascode();
-
+void login();
 class one{
     public:
     virtual void show() = 0;
@@ -307,13 +308,13 @@ void menu(){
         cout<<"\n---------------------------------------------\n";
         cout<<"\t\t    Please Select Any Option            \n";
 
-        cout<<"\n\n\\t1-\t\t Press 1 for Available Doctor Information \n\n";
+        cout<<"\n\n\t1-\t\t Press 1 for Available Doctor Information \n\n";
         cout<<"\t2- \t\t Press 2 for Doctor Appointment\n\n";
         cout<<"\t3- \t\t Press 3 for Saving Staff Information\n\n";
         cout<<"\t4- \t\t Press 4 for Checking patient appointment menu: \n\n";
         cout<<"\t5- \t\t Press 5 for Checking Staff Information Menu: \n\n";
         cout<<"\t6- \t\t Press 6 for Change Password or Create Password \n\n";
-        cout<<"\t7- \t\t Press 7 for Logout      ]\n\n";
+        cout<<"\t7- \t\t Press 7 for Logout       \n\n";
 
         cout<<"\n============================================\n";
         cout<<"\n\n\t\t Please Enter your Choice: ";
@@ -343,25 +344,35 @@ void menu(){
             cpascode();
         }
         else if(a==7){
-            pascode();
+            login();
         }
         else{
             cout<<"Sorry invalid choice: ";
         }
 
 }
-
+void reg()
+{
+	string a,b;
+	system("cls");
+	cout<<"\n\n\t\t Enter Username: ";
+	//cin.flush();
+	getline(cin,a);
+	cout<<"\n\n\t\t Enter Password: ";
+	//cin.flush();
+	getline(cin,b);
+	
+}
 void pascode(){
 
     system("cls");
     char p1[50], p2[50], p3[50];
 
     system("color FC");
-
-    ifstream in(password.txt);{
+    ifstream in("password.txt");{
         cin.sync();
-
-        cout<<"\n\n\n\n\n\n\n\n\t\t\t Enter the Password";
+		
+        cout<<"\n\n\n\n\n\n\n\n\t\t\t Enter the Password: ";
         cin.getline(p1,50);
         in.getline(p2,50);
         if(strcmp(p2,p1)==0){
@@ -369,8 +380,8 @@ void pascode(){
         }
         else{
 
-            cout<<"\n\n\t\t Incorrect Passcode Pleas try Agani";
-            sleep(999);
+            cout<<"\n\n\t\t Incorrect Passcode Pleas try Again";
+            //sleep(5);
             pascode();
         }
         
@@ -393,9 +404,26 @@ void cpascode(){
     getch();
     menu();
 }
-
+void login()
+{
+	system("cls");
+	system("color E9");
+	cout<<"\n\n\t1-\t\t New User? Press 1 to register";
+	cout<<"\n\n\t2- \t\t Press 2 to login\n\n";
+	cout<<"\t\t Enter Key: ";
+	int a;
+	cin>>a;
+	if(a == 1)
+	reg();
+	else if(a == 2)
+	pascode();
+	else
+	{
+		cout<<"\n\n\t\t Wrong Choice";
+		login();
+	}
+}
 int main(){
     pascode();
     system("pause");
-
 }
