@@ -27,4 +27,26 @@ class info : public one{
         cout<<"Enter appointment no.\n";
         cin>>num;
     }
+    void show()
+    {
+        cout<<"\nName ="<<name;
+        cout<<"\nAge ="<<age;
+        cout<<"\nNo ="<<num;
+        cout<<"\nTime ="<<time;
+    }
+};
+class rana:public info{
+    public:
+    info a1;
+    void get()
+    {
+        system("cls");
+        ofstream out("Rana.txt", ios::app|ios::binary);
+        a1.get();
+        out.write((char*)&a1,sizeof(a1));
+        out.close();
+        cout<<"Your entry has been saved";
+        getch();
+        menu();
+    }
 };
