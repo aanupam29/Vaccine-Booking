@@ -295,7 +295,7 @@ void pinfoshow(){
 void menu(){
 
 
-    system("cls");
+    	system("cls");
         system("color FC");
 
         cout<<"\n";
@@ -353,39 +353,90 @@ void menu(){
 }
 void reg()
 {
-	string a,b;
+	string a,b,c,d,sex,age;
 	system("cls");
-	cout<<"\n\n\t\t Enter Username: ";
-	//cin.flush();
+	cout<<"\n\t\t Enter Name: ";
+	cin>>ws;
 	getline(cin,a);
-	cout<<"\n\n\t\t Enter Password: ";
-	//cin.flush();
+	cout<<"\n\t\t Enter UserId: ";
+	cin>>ws;
 	getline(cin,b);
+	// Checking if UserId already exists
+	ifstream cp(b+".txt");
+	if(cp)
+	{
+		cout<<"\n\t\t UserId Already Exists\n";
+		login();
+	}
+	cp.close();
+	cout<<"\n\t\t Enter Password: ";
+	cin>>ws;
+	getline(cin,c);
+	cout<<"\n\t\t Enter Age: ";
+	cin>>ws;
+	getline(cin,age);
+	cout<<"\n\t\t Enter Sex: ";
+	cin>>ws;
+	getline(cin,sex);
+	cout<<"\n\t\t Enter Email: ";
+	cin>>ws;
+	getline(cin,d);
 	
+	ofstream op(b+".txt",ios::app);
+	op<<"UserId = "<<b<<"\nPassword = "<<c<<"\nName = "<<a<<"\nAge = "<<age<<"\nSex = "<<sex<<"\nEmail = "<<d;
+	op.close();
+	cout<<"\n\n\t\tYour Information has been saved \n\n\tPress Any Key To Continue \t";
+	getch();
+	login();
 }
 void pascode(){
 
     system("cls");
-    char p1[50], p2[50], p3[50];
+    string a,b;
 
     system("color FC");
-    ifstream in("password.txt");{
-        cin.sync();
-		
-        cout<<"\n\n\n\n\n\n\n\n\t\t\t Enter the Password: ";
-        cin.getline(p1,50);
-        in.getline(p2,50);
-        if(strcmp(p2,p1)==0){
+    
+    cout<<"\n\t\t Enter UserId: ";
+	cin>>ws;
+	getline(cin,a);
+    ifstream in(a+".txt");
+    if(in)
+	{
+        cout<<"\n\t\t Enter Password: ";
+		cin>>ws;
+		getline(cin,b);
+        string pass = "", line;
+        getline(in,line);
+        getline(in,line);
+        for(int i = 0; i < line.length(); i++)
+        {
+        	if((i+1) < line.length() && line[i] == '=' && line[i+1] == ' ')
+        	{
+        		i += 2;
+        		while(i < line.length())
+        		{
+        			pass += line[i];
+        			++i;
+				}
+			}
+		}
+        if(b == pass){
             menu();
         }
         else{
 
-            cout<<"\n\n\t\t Incorrect Passcode Pleas try Again";
+            cout<<"\n\n\t\t Incorrect Password";
             //sleep(5);
-            pascode();
+            login();
         }
         
     }
+    else
+    {		
+		cout<<"\n\n\t\t UserId does not exist";
+        //sleep(5);
+        login();    	
+	}
     in.close();
 }
 
@@ -424,6 +475,6 @@ void login()
 	}
 }
 int main(){
-    pascode();
+    login();
     system("pause");
 }
