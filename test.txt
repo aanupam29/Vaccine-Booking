@@ -1,0 +1,6 @@
+UserId = test
+Password = test
+Name = test
+Age = 22
+Sex = M
+Email = ss

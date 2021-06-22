@@ -7,6 +7,8 @@ void menu();
 void pascode();
 void cpascode();
 void login();
+void display();
+string id;
 class one{
     public:
     virtual void show() = 0;
@@ -291,13 +293,27 @@ void pinfoshow(){
         menu();
     }
 };
-
+void display()
+{
+	system("cls");
+	ifstream op(id);
+	cout<<"\n";
+	while(!op.eof())
+	{
+		string line;
+		getline(op,line);
+		cout<<"\n\t\t"<<line<<"\n";
+	}
+	op.close();
+	cout<<"\n\n\t\tPress any key to return to menu: ";
+	getch();
+	menu();
+}
 void menu(){
 
 
     	system("cls");
         system("color FC");
-
         cout<<"\n";
         cout<<"\n";
 
@@ -314,7 +330,8 @@ void menu(){
         cout<<"\t4- \t\t Press 4 for Checking patient appointment menu: \n\n";
         cout<<"\t5- \t\t Press 5 for Checking Staff Information Menu: \n\n";
         cout<<"\t6- \t\t Press 6 for Change Password or Create Password \n\n";
-        cout<<"\t7- \t\t Press 7 for Logout       \n\n";
+        cout<<"\t7- \t\t Press 7 To Display Profile Details \n\n";
+        cout<<"\t8- \t\t Press 8 for Logout       \n\n";
 
         cout<<"\n============================================\n";
         cout<<"\n\n\t\t Please Enter your Choice: ";
@@ -343,7 +360,11 @@ void menu(){
         else if(a==6){
             cpascode();
         }
-        else if(a==7){
+        else if(a == 7)
+        {
+        	display();
+		}
+        else if(a==8){
             login();
         }
         else{
@@ -392,14 +413,15 @@ void reg()
 void pascode(){
 
     system("cls");
-    string a,b;
+    string b;
 
     system("color FC");
     
     cout<<"\n\t\t Enter UserId: ";
 	cin>>ws;
-	getline(cin,a);
-    ifstream in(a+".txt");
+	getline(cin,id);
+	id += ".txt";
+    ifstream in(id);
     if(in)
 	{
         cout<<"\n\t\t Enter Password: ";
