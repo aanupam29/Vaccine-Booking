@@ -10,8 +10,11 @@ void menu();
 void pascode();
 void cpascode();
 void login();
+void admin_login();
 int main();
 string id;
+
+
 class one{
     public:
     virtual void show() = 0;
@@ -479,6 +482,48 @@ void pascode(){
     login();
 }
 
+void admin_login()
+{
+	system("cls");
+	string admin_id, admin_pass;
+	cout<<"\n\n\tEnter Admin id ";
+	cin>>ws;
+	getline(cin, admin_id);
+	cout<<"\n\n\tEnter Password ";
+	cin>>ws;
+	getline(cin, admin_pass);
+	ifstream in("admin.txt");
+	if(in)
+	{
+		int flag=1;
+		string a_id, a_pass;
+		while(1)
+		{
+			getline(in, a_id);
+			if(a_id == "end")
+			{
+				break;
+			}
+			getline(in, a_pass);
+			if(a_id==admin_id && a_pass==admin_pass)
+			{
+				//////    call admin menu function here ////////
+				cout<<"\n\tLogged in success\n";
+				this_thread::sleep_for(chrono::seconds(1));
+				flag=0;
+				break;
+			}
+		}
+		if(flag)
+		{
+			cout<<"\n\n\tAdmin id or password wrong\n\n";
+			this_thread::sleep_for(chrono::seconds(1));
+		}
+	}
+	in.close();
+	login();
+}
+
 void cpascode(){
     char n[50];
     system("cls");
@@ -499,7 +544,8 @@ void login()
 	system("cls");
 	system("color E9");
 	cout<<"\n\n\t1-\t\t New User? Press 1 to register";
-	cout<<"\n\n\t2- \t\t Press 2 to login\n\n";
+	cout<<"\n\n\t2-\t\t Press 2 to login";
+	cout<<"\n\n\t3-\t\t Press 3 for Admin Login\n\n";
 	cout<<"\t\t Enter Key: ";
 	string a;
 	cin>>a;
@@ -507,6 +553,8 @@ void login()
 	reg();
 	else if(a == "2")
 	pascode();
+	else if(a == "3")
+		admin_login();
 	else
 	{
 		cout<<"\n\t\t\t Invalid Choice";
