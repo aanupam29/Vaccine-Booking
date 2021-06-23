@@ -382,7 +382,7 @@ void menu(){
 }
 void reg()
 {
-	string a,b,c,d,sex,age;
+	string a,b,c,z,d,sex,age;
 	system("cls");
 	cout<<"\n\t\t Enter Name: ";
 	cin>>ws;
@@ -402,6 +402,16 @@ void reg()
 	cout<<"\n\t\t Enter Password: ";
 	cin>>ws;
 	getline(cin,c);
+	cout<<"\n\t\t Confirm Password: ";
+	cin>>ws;
+	getline(cin,z);
+	while(c!=z)
+	{
+		cout<<"\n\t\t Password don't match.\n";
+		cout<<"\n\t\t Confirm Password : ";
+		cin>>ws;
+		getline(cin,z);
+	}
 	cout<<"\n\t\t Enter Age: ";
 	cin>>ws;
 	getline(cin,age);
