@@ -323,9 +323,9 @@ void menu(){
         cout<<"\n";
         cout<<"\n";
 
-        cout<<"\t\t   | +++++++++++ MAIN MENU ++++++++  | \n";
-        cout<<"\t\t   |   Hospital Management System    |\n";
-        cout<<"\t\t   |=================================|  \n";
+        cout<<"\t\t   | +++++++++++ MAIN MENU ++++++++  |  \n";
+        cout<<"\t\t   |           City Hospital         |  \n";
+        cout<<"\t\t   | ==============================  |  \n";
 
         cout<<"\n--------------------------------------------------------------------------------------------------------------\n";
         cout<<"\t\t    Please Select Any Option            \n";
@@ -421,6 +421,12 @@ void reg()
 	cout<<"\n\t\t Enter Sex: M /F : ";
 	cin>>ws;
 	getline(cin,sex);
+	while(sex.length()!=1 || (sex[0]!='M' && sex[0]!='F'))
+	{
+		cout<<"\n\t\t Enter Sex: M /F : ";
+		cin>>ws;
+		getline(cin,sex);
+	}
 	cout<<"\n\t\t Enter Email: ";
 	cin>>ws;
 	getline(cin,d);
