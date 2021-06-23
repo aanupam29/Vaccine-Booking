@@ -457,6 +457,7 @@ void pascode(){
 		getline(cin,b);
         string pass = "", line;
         getline(in,line);
+        getline(in,line);
         for(int i = 0; i < line.length(); i++)
         {
         	if((i+1) < line.length() && line[i] == '=' && line[i+1] == ' ')
