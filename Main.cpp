@@ -369,27 +369,38 @@ void menu(){
         cout<<"\n";
         cout<<"\n";
 
-        cout<<"\t\t   | +++++++++++ MAIN MENU ++++++++  |  \n";
-        cout<<"\t\t   |           City Hospital         |  \n";
-        cout<<"\t\t   | ==============================  |  \n";
+        cout<<"\t\t\t\t         | +++++++++++ MAIN MENU ++++++++  |  \n";
+        cout<<"\t\t\t\t         |           City Hospital         |  \n";
+        cout<<"\t\t\t\t         | ==============================  |  \n";
+        cout<<"\t\t\t\t         | +++++Vaccine Registration+++++  |  \n";
 
         cout<<"\n--------------------------------------------------------------------------------------------------------------\n";
         cout<<"\t\t    Please Select Any Option            \n";
 
-        cout<<"\n\n\t1-\t\t Press 1 for Available Doctor Information \n\n";
-        cout<<"\t2- \t\t Press 2 for Doctor Appointment\n\n";
-        cout<<"\t3- \t\t Press 3 for Saving Staff Information\n\n";
-        cout<<"\t4- \t\t Press 4 for Checking patient appointment menu: \n\n";
-        cout<<"\t5- \t\t Press 5 for Checking Staff Information Menu: \n\n";
-        cout<<"\t6- \t\t Press 6 for Change Password or Create Password \n\n";
-        cout<<"\t7- \t\t Press 7 To Display Profile Details \n\n";
-        cout<<"\t8- \t\t Press 8 for Logout       \n\n";
+        cout<<"\n\n\t1-\t\t Press 1 for Vaccine Information \n\n";
+        cout<<"\t2- \t\t Press 2 for Vaccine Booking \n\n";
+        cout<<"\t6- \t\t Press 3 to Change Password \n\n";
+        cout<<"\t7- \t\t Press 4 To Display Profile Details \n\n";
+        cout<<"\t8- \t\t Press 8 to Logout       \n\n";
 
         cout<<"\n==============================================================================================================\n";
         int l=id.length();
         
         cout<<" \t \t WELCOME "<<id.substr(0,l-4)<<'\n';
         cout<<"\n\n\t\t Please Enter your Choice: ";
+        string a;
+        cin>>a;
+        
+        
+        this_thread::sleep_for(chrono::seconds(1));
+        information a1;
+        one *ptr;
+        staff a2;
+        string a;
+        cin>>a;
+        if(a=="1"){
+            a1.drinfo();
+        }
         string a;
         cin>>a;
         
@@ -403,6 +414,7 @@ void menu(){
 //        if(a=="1"){
 //            a1.drinfo();
 //        }
+
 //        else if(a=="2"){
 //            call_dr();
 //        }
