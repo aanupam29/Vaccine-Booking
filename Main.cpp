@@ -388,7 +388,6 @@ void menu(){
         
         cout<<" \t \t WELCOME "<<id.substr(0,l-4)<<'\n';
         cout<<"\n\n\t\t Please Enter your Choice: ";
-<<<<<<< HEAD
         string a;
         cin>>a;
         
@@ -402,7 +401,6 @@ void menu(){
         if(a=="1"){
             a1.drinfo();
         }
-=======
         string a;
         cin>>a;
         
@@ -416,7 +414,7 @@ void menu(){
 //        if(a=="1"){
 //            a1.drinfo();
 //        }
->>>>>>> bb6d7a276b091749e11e591ce2a3669539eef30f
+
 //        else if(a=="2"){
 //            call_dr();
 //        }
