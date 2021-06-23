@@ -1,5 +1,8 @@
-#include<bits/stdc++.h>
+#include<iostream>
 #include<conio.h>
+#include<fstream>
+#include<chrono>
+#include<thread>
 using namespace std;
 
 void menu();
