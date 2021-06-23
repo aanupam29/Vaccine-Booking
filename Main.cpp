@@ -2,6 +2,7 @@
 #include<conio.h>
 #include<fstream>
 #include<chrono>
+#include<string>
 #include<thread>
 using namespace std;
 
@@ -323,7 +324,7 @@ void menu(){
         cout<<"\t\t   |   Hospital Management System    |\n";
         cout<<"\t\t   |=================================|  \n";
 
-        cout<<"\n---------------------------------------------\n";
+        cout<<"\n--------------------------------------------------------------------------------------------------------------\n";
         cout<<"\t\t    Please Select Any Option            \n";
 
         cout<<"\n\n\t1-\t\t Press 1 for Available Doctor Information \n\n";
@@ -335,7 +336,10 @@ void menu(){
         cout<<"\t7- \t\t Press 7 To Display Profile Details \n\n";
         cout<<"\t8- \t\t Press 8 for Logout       \n\n";
 
-        cout<<"\n============================================\n";
+        cout<<"\n==============================================================================================================\n";
+        int l=id.length();
+        
+        cout<<" \t \t WELCOME "<<id.substr(0,l-4)<<'\n';
         cout<<"\n\n\t\t Please Enter your Choice: ";
         information a1;
         one *ptr;
@@ -401,7 +405,7 @@ void reg()
 	cout<<"\n\t\t Enter Age: ";
 	cin>>ws;
 	getline(cin,age);
-	cout<<"\n\t\t Enter Sex: ";
+	cout<<"\n\t\t Enter Sex: M /F : ";
 	cin>>ws;
 	getline(cin,sex);
 	cout<<"\n\t\t Enter Email: ";
@@ -433,7 +437,6 @@ void pascode(){
 		cin>>ws;
 		getline(cin,b);
         string pass = "", line;
-        getline(in,line);
         getline(in,line);
         for(int i = 0; i < line.length(); i++)
         {
@@ -472,12 +475,12 @@ void cpascode(){
     ofstream out("password.txt");
     {
         cin.sync();
-        cout<<"\n\n\n\n\n\t\t\t Enter the New password";
+        cout<<"\n\n\n\n\n\t\t\t Enter the New password : ";
         cin.getline(n,50);
         out<<n;
     }
     out.close();
-    cout<<"\n\n Your Password has been saved: ";
+    cout<<"\n\n Your Password has been saved ";
     getch();
     menu();
 }
