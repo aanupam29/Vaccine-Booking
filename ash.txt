@@ -1,0 +1,6 @@
+UserId = ash
+Password = 123
+Name = Peter Parker
+Age = 21
+Sex = male
+Email = 12@gmail.com

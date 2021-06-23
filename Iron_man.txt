@@ -1,0 +1,6 @@
+UserId = Iron_man
+Password = 1234
+Name = Stark
+Age = ee
+Sex = M
+Email = 12
