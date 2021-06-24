@@ -11,6 +11,7 @@ void pascode();
 void cpascode();
 void login();
 void admin_login();
+void admin_menu();
 int main();
 string id;
 
@@ -379,9 +380,9 @@ void menu(){
 
         cout<<"\n\n\t1-\t\t Press 1 for Vaccine Information \n\n";
         cout<<"\t2- \t\t Press 2 for Vaccine Booking \n\n";
-        cout<<"\t6- \t\t Press 3 to Change Password \n\n";
-        cout<<"\t7- \t\t Press 4 To Display Profile Details \n\n";
-        cout<<"\t8- \t\t Press 8 to Logout       \n\n";
+        cout<<"\t3- \t\t Press 3 to Change Password \n\n";
+        cout<<"\t4- \t\t Press 4 to Display Profile Details \n\n";
+        cout<<"\t5- \t\t Press 5 to Logout       \n\n";
 
         cout<<"\n==============================================================================================================\n";
         int l=id.length();
@@ -393,16 +394,16 @@ void menu(){
         
         
         this_thread::sleep_for(chrono::seconds(1));
-        information a1;
-        one *ptr;
-        staff a2;
-        string a;
-        cin>>a;
-        if(a=="1"){
-            a1.drinfo();
-        }
-        string a;
-        cin>>a;
+//        information a1;
+//        one *ptr;
+//        staff a2;
+//        string a;
+//        cin>>a;
+//        if(a=="1"){
+//            a1.drinfo();
+//        }
+//        string a;
+//        cin>>a;
         
         
         this_thread::sleep_for(chrono::seconds(1));
@@ -446,6 +447,33 @@ void menu(){
 //        }
 
 }
+
+void admin_menu(string a_id)
+{
+	system("cls");
+    system("color FC");
+    cout<<"\n\n";
+
+    cout<<"\t\t\t\t         | ++++++++++ ADMIN MENU ++++++++  |  \n";
+    cout<<"\t\t\t\t         |           City Hospital         |  \n";
+    cout<<"\t\t\t\t         | ==============================  |  \n";
+    cout<<"\t\t\t\t         | +++++Vaccine Registration+++++  |  \n";
+
+    cout<<"\n--------------------------------------------------------------------------------------------------------------\n";
+    cout<<"\t\t    Please Select Any Option            \n";
+
+    cout<<"\n\n\t1-\t\t Press 1 for Vaccine Information \n\n";
+    cout<<"\t2- \t\t Press 2 for Updating vaccine Information \n\n";
+    cout<<"\t3- \t\t Press 3 to see Patient's Details \n\n";
+    cout<<"\t5- \t\t Press 4 to Logout       \n\n";
+
+    cout<<"\n==============================================================================================================\n";
+    
+    cout<<" \t \t WELCOME "<<a_id<<'\n';
+    
+    this_thread::sleep_for(chrono::seconds(1));
+}
+
 void reg()
 {
 	string a,b,c,z,d,sex,age;
@@ -578,8 +606,9 @@ void admin_login()
 			if(a_id==admin_id && a_pass==admin_pass)
 			{
 				//////    call admin menu function here ////////
-				cout<<"\n\tLogged in success\n";
-				this_thread::sleep_for(chrono::seconds(1));
+//				cout<<"\n\tLogged in success\n";
+//				this_thread::sleep_for(chrono::seconds(1));
+				admin_menu(a_id);
 				flag=0;
 				break;
 			}
