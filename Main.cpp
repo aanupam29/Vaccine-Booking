@@ -318,17 +318,22 @@ string id;
 
 
 class Vaccine{
+	int number = 0;
 public:
 	virtual void booking()=0;
 	virtual int availability()=0;
 	virtual void add(int num)=0;
+	virtual void set(int num)=0;
 };
 
 class covishield : public Vaccine{
 	int number=0;
 public:
-	int availablity(){
+	int availability(){
 		return number;
+	}
+	void set(int num){
+		number = num;
 	}
 	void booking(){
 		number--;
@@ -341,8 +346,11 @@ public:
 class covaxin : public Vaccine{
 	int number=0;
 public:
-	int availablity(){
+	int availability(){
 		return number;
+	}
+	void set(int num){
+		number = num;
 	}
 	void booking(){
 		number--;
@@ -482,7 +490,7 @@ void menu(){
 
 }
 
-void admin_menu(string a_id)
+void admin_menu()
 {
 	system("cls");
     system("color FC");
@@ -503,29 +511,85 @@ void admin_menu(string a_id)
 
     cout<<"\n==============================================================================================================\n";
     
-    cout<<" \t \t WELCOME "<<a_id<<'\n';
-    cout<<"\t\t    Please Select Any Option            \n";
+    cout<<" \t \t WELCOME "<<'\n';
+    cout<<"\t\t    Please Select Any Option : ";
     string a;
     cin>>a;
     this_thread::sleep_for(chrono::seconds(1));
     if(a=="1"){
-            vaccine_info();
-        }
-        else if(a=="2"){
-            update_vaccine_info();
-        }
-        else if(a=="3"){
-            patient_detail();
-        }
-        else if(a == "4")
-        {
-        	login();
-		}
-        else{
-            cout<<"\n\n\t\tSorry Invalid Choice ";
-            this_thread::sleep_for(chrono::seconds(1));
-            menu();
-        }
+        vaccine_info();
+    }
+    else if(a=="2"){
+        update_vaccine_info();
+    }
+    else if(a=="3"){
+        patient_detail();
+    }
+    else if(a == "4")
+    {
+    	login();
+	}
+    else{
+        cout<<"\n\n\t\tSorry Invalid Choice ";
+        this_thread::sleep_for(chrono::seconds(1));
+        menu();
+    }
+}
+
+void vaccine_info()
+{
+	system("cls");
+	Vaccine *vac;
+	covishield covi;
+	covaxin cova;
+	vac = &covi;
+	ifstream in("covishield.txt");
+	string num;
+	getline(in, num);
+	int curr_num = stoi(num);
+	vac->set(curr_num);
+	cout<<"\n\n\t\t"<<"Covishield Doses Available : "<<vac->availability();
+	in.close();
+	vac = &cova;
+	ifstream in1("covaxin.txt");
+	getline(in1, num);
+	curr_num = stoi(num);
+	vac->set(curr_num);
+	cout<<"\n\n\t\t"<<"Covaxin Doses Available : "<<vac->availability();
+	this_thread::sleep_for(chrono::seconds(1));
+	in1.close();
+	admin_menu();
+}
+
+void book_slot()
+{
+	
+}
+
+void update_vaccine_info()
+{
+	system("cls");
+	Vaccine *vac;
+	cout<<"\n\n\t\tWhich Vaccine Doses would you like to update ?\n";
+	cout<<"\n\t\t1. Covishield\n\t\t2. Covaxin\n\n\t\t";
+	string a;
+	cin>>a;
+	if(a == "1"){
+		
+	}
+	else if(a == "2"){
+		
+	}
+	else{
+		cout<<"Wrong choice";
+	}
+	this_thread::sleep_for(chrono::seconds(1));
+	admin_menu();
+}
+
+void patient_detail()
+{
+
 }
 
 void reg()
@@ -638,10 +702,10 @@ void admin_login()
 {
 	system("cls");
 	string admin_id, admin_pass;
-	cout<<"\n\n\tEnter Admin id ";
+	cout<<"\n\n\tEnter Admin id : ";
 	cin>>ws;
 	getline(cin, admin_id);
-	cout<<"\n\n\tEnter Password ";
+	cout<<"\n\n\tEnter Password : ";
 	cin>>ws;
 	getline(cin, admin_pass);
 	ifstream in("admin.txt");
@@ -662,7 +726,7 @@ void admin_login()
 				//////    call admin menu function here ////////
 //				cout<<"\n\tLogged in success\n";
 //				this_thread::sleep_for(chrono::seconds(1));
-				admin_menu(a_id);
+				admin_menu();
 				flag=0;
 				break;
 			}
@@ -691,7 +755,7 @@ void cpascode(){
 //    cout<<"\n\n Your Password has been saved ";
 //    getch();
 //    menu();
-	char *id_=&id[0];
+	char *id_= &id[0];
     string n;
     system("cls");
     cout<<"\n\n\n\n\n\t\t\t Enter the new password : ";
@@ -743,9 +807,9 @@ void login()
 	string a;
 	cin>>a;
 	if(a == "1")
-	reg();
+		reg();
 	else if(a == "2")
-	pascode();
+		pascode();
 	else if(a == "3")
 		admin_login();
 	else
@@ -755,22 +819,7 @@ void login()
 		login();
 	}
 }
-void vaccine_info()
-{
-	
-}
-void book_slot()
-{
-	
-}
-void update_vaccine_info()
-{
-	
-}
-void patient_detail()
-{
 
-}
 int main(){
     login();
     system("pause");
