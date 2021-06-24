@@ -742,25 +742,7 @@ void admin_login()
 }
 
 void cpascode(){
-<<<<<<< HEAD
-//    char n[50];
-//    system("cls");
-//    ofstream out("password.txt");
-//    {
-//        cin.sync();
-//        cout<<"\n\n\n\n\n\t\t\t Enter the New password : ";
-//        cin.getline(n,50);
-//        out<<n;
-//    }
-//    out.close();
-//    cout<<"\n\n Your Password has been saved ";
-//    getch();
-//    menu();
-	char *id_= &id[0];
-    string n;
-=======
-
->>>>>>> cd8b76b5219bd576142b7c71adf6fb57ba27acd3
+	
     system("cls");
     ifstream op(id);
     ofstream cp("temporary.txt",ios::app);
