@@ -2,5 +2,5 @@ UserId = codecry
 Password = 2309
 Name = Akash
 Age = 20
-Sex = male
-Email = d
+Sex = M
+Email = ss

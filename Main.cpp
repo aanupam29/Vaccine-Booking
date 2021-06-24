@@ -678,59 +678,69 @@ void admin_login()
 }
 
 void cpascode(){
-//    char n[50];
-//    system("cls");
-//    ofstream out("password.txt");
-//    {
-//        cin.sync();
-//        cout<<"\n\n\n\n\n\t\t\t Enter the New password : ";
-//        cin.getline(n,50);
-//        out<<n;
-//    }
-//    out.close();
-//    cout<<"\n\n Your Password has been saved ";
-//    getch();
-//    menu();
-	char *id_=&id[0];
-    string n;
+
     system("cls");
+    ifstream op(id);
+    ofstream cp("temporary.txt",ios::app);
+    if(!op)
+    {
+    	cout<<"\n\n\n\n\n\t\t\t Error Opening File ";
+    	this_thread::sleep_for(chrono::seconds(1));
+    	menu();
+	}
+	
     cout<<"\n\n\n\n\n\t\t\t Enter the new password : ";
     cin>>ws;
-    getline(cin,n);
-    string check="Password = ";
-    fstream in(id_);
-    fstream out("temp.txt");
-    while(!in.eof())
-    {	
-    	string line;
-        getline(in,line);
-        string tt=line.substr(0,11);
-        if(tt==check)
-        {
-        	out<<tt<<n<<endl;
-		}
-		else
-		out<<line<<endl;
-    }
-    in.close();
-    out.close();
-    if(remove(id_) == -1) cout<<"Error: " << strerror(errno) <<endl;
-    rename("temp.txt",id_);
-    
+    string s;
+    getline(cin,s);
+    string check = "Password = ";
     string z;
     cout<<"\n\t\t\t Confirm new password: ";
 	cin>>ws;
 	getline(cin,z);
-	while(n!=z)
+	while(s != z)
 	{
-		cout<<"\n\t\t\t Password don't match.\n";
+		cout<<"\n\t\t\t Password Don't Match.\n";
 		cout<<"\n\t\t\t Confirm Password : ";
 		cin>>ws;
 		getline(cin,z);
 	}
+		
+	string line;
+	getline(op,line);
+	cp<<line;
+	getline(op,line);
+	line = "\nPassword = " + s;
+	cp<<line;
+	while(!op.eof())
+	{
+		getline(op,line);
+		cp<<"\n"<<line;
+	}
+	op.close();
+	cp.close();
+	
+	const char* p = id.c_str();
+	int c = remove(p);
+	
+	ifstream pp("temporary.txt");
+	ofstream fp(id);	
+	getline(pp,line);
+	fp<<line;
+	while(!pp.eof())
+	{
+		getline(pp,line);
+		fp<<"\n"<<line;
+	}
+	pp.close();
+	fp.close();
+	c = remove("temporary.txt");
+	
     cout<<"\n\n\t\t\t Your Password has been saved ";
+    cout<<"\n\n\t\t\t Press any key to return ";
     getch();
     menu();
+    
 }
 void login()
 {
