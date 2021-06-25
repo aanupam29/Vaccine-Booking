@@ -11,6 +11,9 @@
 #include<cstring>
 using namespace std;
 
+#define space cout<<"\n\n\t\t";
+
+
 void menu();
 void pascode();
 void cpascode();
