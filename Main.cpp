@@ -17,7 +17,7 @@ void cpascode();
 void login();
 void admin_login();
 void admin_menu();
-void vaccine_info();
+void vaccine_info(int);
 void book_slot();
 void update_vaccine_info();
 void patient_detail();
@@ -415,7 +415,7 @@ void menu(){
         
         
         if(a=="1"){
-            vaccine_info();
+            vaccine_info(2);
         }
         else if(a=="2"){
             book_slot();
@@ -517,7 +517,7 @@ void admin_menu()
     cin>>a;
     this_thread::sleep_for(chrono::seconds(1));
     if(a=="1"){
-        vaccine_info();
+        vaccine_info(1);
     }
     else if(a=="2"){
         update_vaccine_info();
@@ -536,7 +536,7 @@ void admin_menu()
     }
 }
 
-void vaccine_info()
+void vaccine_info(int ch)
 {
 	system("cls");
 	Vaccine *vac;
@@ -558,7 +558,10 @@ void vaccine_info()
 	cout<<"\n\n\t\t"<<"Covaxin Doses Available : "<<vac->availability();
 	this_thread::sleep_for(chrono::seconds(1));
 	in1.close();
-	admin_menu();
+	if(ch == 1)
+		admin_menu();
+	else
+		menu();
 }
 
 void book_slot()
@@ -678,7 +681,7 @@ void book_slot()
 	int temp;
 	cout<<endl<<"Press any key"<<endl;
 	cin>>temp;
-	
+	menu();
 }
 
 void update_vaccine_info()
