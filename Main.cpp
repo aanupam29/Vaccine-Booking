@@ -678,6 +678,121 @@ void book_slot()
 	cout<<endl<<"Press any key"<<endl;
 	cin>>temp;
 	
+	system("cls");
+	
+	Vaccine *vac_covi, *vac_cova;
+	covishield covi;
+	covaxin cova;
+	vac_covi = &covi;
+	vac_cova = &cova;	
+	ifstream in("covishield.txt");
+	string num;
+	getline(in, num);
+	
+	
+	ifstream inn("covaxin.txt");
+	string num2;
+	getline(inn, num2);
+	
+	int covi_num = stoi(num);
+	vac_covi->set(covi_num);
+	
+	int cova_num = stoi(num2);
+	vac_cova->set(cova_num);
+	int input,slot_input;
+	int flag=0;
+	
+	if(covi_num && cova_num){
+		
+		cout<<"\n\n\t\t"<<"        Press 1 to book Covishield"<<endl;
+		cout<<"\n\n\t\t"<<"         Press 2 to book Covaxin"<<endl<<endl;
+		cout<<"\n\n\t\t";
+		cin>>input;
+		if(input==1 || input==2){
+			cout<<"\n\n\t\t"<<"Chhose a  slot";
+			cout<<"\n\n\t\t"<<"Press 1 for 9am - 10am";
+			cout<<"\n\n\t\t"<<"Press 2 for 10am - 11am";
+			cout<<"\n\n\t\t"<<"Press 3 for 11am - 12pm";
+			cout<<"\n\n\t\t"<<"Press 4 for 12pm - 1pm"<<endl;
+			
+			cout<<"\n\n\t\t";
+			
+			cin>>slot_input;
+			
+			if(slot_input==1){
+				cout<<"\n\n\t\t"<<"Your slot is booked for 9am - 10am";
+				if(input==1){
+					cout<<"\n\n\t\t"<<"Your vaccine covishield is booked";
+//					vac_covi->booking();
+					flag = 1;
+				
+				}
+				else if(input==2){
+					cout<<"\n\n\t\t"<<"Your vaccine covaxin is booked";
+//					vac_cova->booking();
+					flag=2;
+					
+				}
+			}
+			if(slot_input==2){
+				cout<<"\n\n\t\t"<<"Your slot is booked for 10am - 11am";
+				if(input==1){
+					cout<<"\n\n\t\t"<<"Your vaccine covishield is booked";
+//					vac_covi->booking();
+					flag=1;
+				}
+				else if(input==2){
+					cout<<"\n\n\t\t"<<"Your vaccine covaxin is booked";
+//					vac_cova->booking();
+					flag=2;
+				}
+			}
+			if(slot_input==3){
+				cout<<"\n\n\t\t"<<"Your slot is booked for 11am - 12pm";
+				if(input==1){
+					cout<<"\n\n\t\t"<<"Your vaccine covishield is booked";
+//					vac_covi->booking();
+					flag=1;
+				}
+				else if(input==2){
+					cout<<"\n\n\t\t"<<"Your vaccine covaxin is booked";
+//					vac_cova->booking();
+					flag=2;
+				}
+			}
+			if(slot_input==4){
+				cout<<"\n\n\t\t"<<"Your slot is booked for 12pm - 1pm";
+				if(input==1){
+					cout<<"\n\n\t\t"<<"Your vaccine covishield is booked";
+//					vac_covi->booking();
+					flag=1;
+				}
+				else if(input==2){
+					cout<<"\n\n\t\t"<<"Your vaccine covaxin is booked";
+//					vac_cova->booking();
+					flag=2;
+				}
+			}	
+		}
+	
+	}
+	
+	if(flag==1){
+		vac_covi->booking();
+		ofstream out("covishield.txt");
+		out<<to_string(vac_covi->availability());
+		out.close();
+	}
+	else if(flag==2){
+		vac_cova->booking();
+		ofstream out("covishield.txt");
+		out<<to_string(vac_cova->availability());
+		out.close();
+	}
+	int temp;
+	cout<<endl<<"Press any key"<<endl;
+	cin>>temp;
+	
 }
 
 void update_vaccine_info()
@@ -701,7 +816,7 @@ void update_vaccine_info()
 		vac->set(curr_num);
 		
 		cout<<"\n\n\t\t"<<"Covishield Doses Currently Available : "<<vac->availability();
-		cout<<"\n\t\t How many more Covaxin doses you want to add ? : ";
+		cout<<"\n\t\t How many more Covishield doses you want to add ? : ";
 		int addv;cin>>ws;cin>>addv;
 		vac->add(addv);
 		ofstream out("covishield.txt");
@@ -730,7 +845,7 @@ void update_vaccine_info()
 		ofstream out("covaxin.txt");
 		out<<to_string(vac->availability());
 		out.close();
-		cout<<"\n\n\t\t"<<"Coviaxin Doses Currently Available : "<<vac->availability();
+		cout<<"\n\n\t\t"<<"Covaxin Doses Currently Available : "<<vac->availability();
 		
 	}
 	else{
