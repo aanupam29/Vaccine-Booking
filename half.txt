@@ -1,0 +1,6 @@
+UserId = half
+Password = abc
+Name = halfsoul
+Age = 22
+Sex = M
+Email = as
