@@ -765,12 +765,62 @@ void book_slot()
 		ofstream out("covishield.txt");
 		out<<to_string(vac_covi->availability());
 		out.close();
+		ifstream inn("covi_det.txt");
+		ofstream of("temp.txt");
+		ifstream user(id);
+		string data;
+		while(!user.eof()){
+			getline(user, data);
+			of<<data<<"\n";
+		}
+		while(!inn.eof()){
+			getline(inn, data);
+			of<<data<<"\n";
+		}
+		of.close();
+		inn.close();
+		user.close();
+		ofstream buf("covi_det.txt");
+		ifstream nxt("temp.txt");
+		buf<<"\n";
+		while(!nxt.eof()){
+			getline(nxt, data);
+			buf<<data<<"\n";
+		}
+		buf.close();
+		nxt.close();
+		int c = remove("temp.txt");
 	}
 	else if(flag==2){
 		vac_cova->booking();
 		ofstream out("covaxin.txt");
 		out<<to_string(vac_cova->availability());
 		out.close();
+		ifstream inn("cova_det.txt");
+		ofstream of("temp.txt");
+		ifstream user(id);
+		string data;
+		while(!user.eof()){
+			getline(user, data);
+			of<<data<<"\n";
+		}
+		while(!inn.eof()){
+			getline(inn, data);
+			of<<data<<"\n";
+		}
+		of.close();
+		inn.close();
+		user.close();
+		ofstream buf("cova_det.txt");
+		ifstream nxt("temp.txt");
+		buf<<"\n";
+		while(!nxt.eof()){
+			getline(nxt, data);
+			buf<<data<<"\n";
+		}
+		buf.close();
+		nxt.close();
+		int c = remove("temp.txt");
 	}
 	int temp;
 	space cout<<"Press any key for menu"<<endl;
