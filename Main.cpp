@@ -587,7 +587,7 @@ void update_vaccine_info()
 		vac->set(curr_num);
 		
 		cout<<"\n\n\t\t"<<"Covishield Doses Currently Available : "<<vac->availability();
-		cout<<"\n\t\t How many more Covaxin doses you want to add ? : ";
+		cout<<"\n\t\t How many more Covishield doses you want to add ? : ";
 		int addv;cin>>ws;cin>>addv;
 		vac->add(addv);
 		ofstream out("covishield.txt");
@@ -616,7 +616,7 @@ void update_vaccine_info()
 		ofstream out("covaxin.txt");
 		out<<to_string(vac->availability());
 		out.close();
-		cout<<"\n\n\t\t"<<"Coviaxin Doses Currently Available : "<<vac->availability();
+		cout<<"\n\n\t\t"<<"Covaxin Doses Currently Available : "<<vac->availability();
 		
 	}
 	else{
