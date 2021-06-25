@@ -576,8 +576,47 @@ void update_vaccine_info()
 	cin>>a;
 	if(a == "1"){
 		
+		Vaccine *vac;
+		covishield covi;
+		vac = &covi;
+		
+		ifstream in("covishield.txt");
+		string num;
+		getline(in, num);
+		int curr_num = stoi(num);
+		vac->set(curr_num);
+		
+		cout<<"\n\n\t\t"<<"Covishield Doses Currently Available : "<<vac->availability();
+		cout<<"\n\t\t How many more Covaxin doses you want to add ? : ";
+		int addv;cin>>ws;cin>>addv;
+		vac->add(addv);
+		ofstream out("covishield.txt");
+		out<<to_string(vac->availability());
+		out.close();
+		
+		cout<<"\n\n\t\t"<<"Covishield Doses Currently Available : "<<vac->availability();
+		
 	}
 	else if(a == "2"){
+		
+		Vaccine *vac;
+		covaxin cova;
+		vac = &cova;
+		
+		ifstream in("covaxin.txt");
+		string num;
+		getline(in, num);
+		int curr_num = stoi(num);
+		vac->set(curr_num);
+		
+		cout<<"\n\n\t\t"<<"Covaxin Doses Currently Available : "<<vac->availability();
+		cout<<"\n\t\t How many more Covaxin doses you want to add ? : ";
+		int addv;;cin>>ws;cin>>addv;
+		vac->add(addv);
+		ofstream out("covaxin.txt");
+		out<<to_string(vac->availability());
+		out.close();
+		cout<<"\n\n\t\t"<<"Coviaxin Doses Currently Available : "<<vac->availability();
 		
 	}
 	else{
