@@ -117,6 +117,7 @@ void menu(){
         
         cout<<" \t \t WELCOME "<<id.substr(0,l-4)<<'\n';
         cout<<"\n\n\t\t Please Enter your Choice: ";
+        cin>>ws;
         string a;
         cin>>a;
         
@@ -193,7 +194,7 @@ void admin_menu()
     else{
         cout<<"\n\n\t\tSorry Invalid Choice ";
         this_thread::sleep_for(chrono::seconds(1));
-        menu();
+        admin_menu();
     }
 }
 

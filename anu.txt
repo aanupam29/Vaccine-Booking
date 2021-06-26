@@ -1,5 +1,5 @@
 UserId = anu
-Password = anu
+Password = anup
 Name = anu
 Age = 18
 Sex = M
