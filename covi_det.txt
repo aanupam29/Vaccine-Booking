@@ -1,4 +1,11 @@
 
+UserId = codecry
+Password = 2309
+Name = Akash
+Age = 20
+Sex = M
+Email = ss
+
 UserId = anu
 Password = anu
 Name = anu
@@ -12,3 +19,4 @@ Name = anu
 Age = 18
 Sex = M
 Email = anu
+
