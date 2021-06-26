@@ -81,6 +81,9 @@ void display()
 	{
 		string line;
 		getline(op,line);
+		if(line == "Booked"){
+			break;
+		}
 		cout<<"\n\t\t"<<line<<"\n";
 	}
 	op.close();
@@ -121,10 +124,7 @@ void menu(){
         string a;
         cin>>a;
         
-        
         this_thread::sleep_for(chrono::seconds(1));
-        //Vaccine v;
-        
         
         if(a=="1"){
             vaccine_info(2);
@@ -229,7 +229,18 @@ void vaccine_info(int ch)
 void book_slot()
 {
 	system("cls");
-	
+	string data;
+	ifstream d(id);
+	while(!d.eof()){
+		getline(d, data);
+		if(data == "Booked"){
+			cout<<"\n\n\n\n\t\t\t\tYou Have Already Taken Your First Dose\n";
+			this_thread::sleep_for(chrono::seconds(1));
+			d.close();
+			menu();
+		}
+	}
+	d.close();
 	Vaccine *vac_covi, *vac_cova;
 	covishield covi;
 	covaxin cova;
@@ -427,7 +438,6 @@ void book_slot()
 		ifstream inn("covi_det.txt");
 		ofstream of("temp.txt");
 		ifstream user(id);
-		string data;
 		while(!user.eof()){
 			getline(user, data);
 			of<<data<<"\n";
@@ -458,7 +468,6 @@ void book_slot()
 		ifstream inn("cova_det.txt");
 		ofstream of("temp.txt");
 		ifstream user(id);
-		string data;
 		while(!user.eof()){
 			getline(user, data);
 			of<<data<<"\n";
@@ -481,7 +490,25 @@ void book_slot()
 		nxt.close();
 		int c = remove("temp.txt");
 	}
-	int temp;
+	ifstream w(id);
+	ofstream x("temp.txt");
+	while(!w.eof()){
+		getline(w, data);
+		x<<data<<"\n";
+	}
+	x<<"Booked";
+	w.close();
+	x.close();
+	ifstream y("temp.txt");
+	ofstream z(id);
+	while(!y.eof()){
+		getline(y, data);
+		z<<data<<"\n";
+	}
+	y.close();
+	z.close();
+	int c = remove("temp.txt");
+	char temp;
 	space cout<<"Press any key for menu"<<endl;
 	space 
 	cin>>temp;

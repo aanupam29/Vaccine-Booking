@@ -1,5 +1,19 @@
 
 UserId = anu
+Password = anu
+Name = anu
+Age = 18
+Sex = M
+Email = anu
+
+UserId = anu
+Password = anu
+Name = anu
+Age = 18
+Sex = M
+Email = anu
+
+UserId = anu
 Password = anup
 Name = anu
 Age = 18
@@ -26,6 +40,10 @@ Name = anu
 Age = 18
 Sex = M
 Email = anu
+
+
+
+
 
 
 
